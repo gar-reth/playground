@@ -1,5 +1,14 @@
 <script lang="ts">
 	import { toast } from 'svelte-sonner';
+	import DataTable from "$lib/components/data-table/data-table.svelte";
+	import { columns, type Payment } from "$lib/components/data-table/columns.js";
+
+	const data = [
+		{ id: "1", status: "pending", email: "john.doe@example.com", amount: 100 },
+		{ id: "2", status: "processing", email: "jane.smith@example.com", amount: 200 },
+		{ id: "3", status: "success", email: "alice.johnson@example.com", amount: 300 },
+		{ id: "4", status: "failed", email: "bob.brown@example.com", amount: 400 },
+	] as const satisfies Payment[];
 
 	const samples = [
 		() => toast('Copied'),
@@ -43,13 +52,11 @@
 
 <main class="flex min-h-screen flex-col items-center justify-center gap-4 bg-slate-50 text-slate-900">
 	<h1 class="text-3xl font-bold">Playground</h1>
-	<p class="max-w-sm text-center text-slate-600">
-		Each click fires a different toast so the stack has mixed heights.
-	</p>
 	<button
 		class="rounded-lg bg-indigo-600 px-4 py-2 text-white transition hover:bg-indigo-700"
 		onclick={showToast}
 	>
 		Show toast
 	</button>
+	<DataTable data={data} {columns} />
 </main>
