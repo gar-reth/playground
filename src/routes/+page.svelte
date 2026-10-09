@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { toast } from 'svelte-sonner';
-	import DataTable from "$lib/components/data-table/data-table.svelte";
-	import { columns, type Payment } from "$lib/components/data-table/columns.js";
+	import DataTable from '$lib/components/data-table/data-table.svelte';
+	import { columns, type Payment } from '$lib/components/data-table/columns.js';
+	import PrivyAuth from '$lib/components/privy/privy-auth.svelte';
 
 	const data = [
 		{ id: "1", status: "pending", email: "john.doe@example.com", amount: 100 },
@@ -50,8 +51,9 @@
 	}
 </script>
 
-<main class="flex min-h-screen flex-col items-center justify-center gap-4 bg-slate-50 text-slate-900">
+<main class="flex min-h-screen flex-col items-center justify-center gap-8 bg-slate-50 px-4 py-12 text-slate-900">
 	<h1 class="text-3xl font-bold">Playground</h1>
+	<PrivyAuth />
 	<button
 		class="rounded-lg bg-indigo-600 px-4 py-2 text-white transition hover:bg-indigo-700"
 		onclick={showToast}
